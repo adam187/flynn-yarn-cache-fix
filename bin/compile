@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# bin/compile <build-dir> <cache-dir>
+
+# Fail immediately on non-zero exit code.
+set -e
+# Fail immediately on non-zero exit code within a pipeline.
+set -o pipefail
+# Fail on undeclared variables.
+set -u
+# Debug, echo every command
+#set -x
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+ENV_DIR=$3
+
+echo "Build dir:"
+echo $BUILD_DIR
+echo "Cache dir:"
+echo $CACHE_DIR
+echo "Env dir:"
+echo $ENV_DIR
+echo "Home:"
+echo $HOME
