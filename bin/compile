@@ -14,6 +14,7 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
 YARNRC=$HOME/.yarnrc
+YARN_CACHE_DIR=$BUILD_DIR/.yarn-cache
 
 echo "Build dir:"
 echo $BUILD_DIR
@@ -25,8 +26,13 @@ echo "Home:"
 echo $HOME
 echo "Yarnrc:"
 echo $YARNRC
+echo "Yarn cache dir:"
+echo $YARN_CACHE_DIR
 
-if [ -f $YARNRC ]; then
-  echo "Removing cache folder from ${YARNRC}"
+if [ -d $YARN_CACHE_DIR ]; then
+  echo "Clearing yarn cache dir from build: ${YARN_CACHE_DIR}"
+  rm -rf $YARN_CACHE_DIR
+elif [ -f $YARNRC ]; then
+  echo "Removing cache folder from: ${YARNRC}"
   sed -i '/^--cache-folder/d' $YARNRC
 fi
